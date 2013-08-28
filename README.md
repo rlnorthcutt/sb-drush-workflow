@@ -18,7 +18,7 @@ When generating a database dump, you can use the structure tables flag to remove
  - springboard : this empties the springboard, ubercart, and webform data tables (MINIMAL)
  - common+springboard : this does all of the above (BEST)
 
-drush sql-dump --structure-tables-key=common+springboard
+drush sql-dump --structure-tables-key=common+springboard --result-file=~/PROJECT-DATE-db.sql --gzip
 
 _note: this will fail if you have tables listed in the array that are not in your database. Just modify it as needed._
 

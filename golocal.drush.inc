@@ -24,7 +24,7 @@ function golocal_drush_command() {
 /**
  * Put the site in local development mode.
  */
-function drush_golocal_golocal() {
+function drush_golocal() {
   // Enable dev friendly modules.
   module_enable(array('devel', 'reroute_email', 'dblog', 'update', 'diff', 'field_ui'), TRUE);
 
@@ -68,7 +68,7 @@ function drush_golocal_golocal() {
 /**
  * Put the site in production mode.
  */
-function drush_golocal_golocal() {
+function drush_goprod() {
   // @TODO: reverse the above
 }
 

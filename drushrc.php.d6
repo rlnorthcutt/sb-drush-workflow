@@ -23,30 +23,26 @@ $options['shell-aliases']['nc-dis'] = '!drush -y dis $(drush pml --status=enable
 $options['shell-aliases']['wipe'] = 'cache-clear all';
 $options['shell-aliases']['offline'] = 'variable-set -y --always-set maintenance_mode 1';
 $options['shell-aliases']['online'] = 'variable-delete -y --exact maintenance_mode';
-$options['shell-aliases']['get-db'] = 'sql-dump --structure-tables-key=common+springboard';
-$options['shell-aliases']['sync-db'] = 'sql-sync --structure-tables-key=common+springboard';
+$options['shell-aliases']['get-db'] = 'sql-dump --structure-tables-key="common+springboard" --gzip';
+$options['shell-aliases']['sync-db'] = 'sql-sync --structure-tables-key="common+springboard" --confirm-sanitizations';
+// Needs the full URL of the page to clear
+$options['shell-aliases']['varnish-clear'] = '!curl -X PURGE';
+// Custom shortcuts
+$options['shell-aliases']['update-files-dev'] = "!rsync -av --delete --exclude '*.js' --exclude '*.css' ifaw-1:/opt/gluster/files/ifaw.org/default/ ifaw-dev:/var/www/files/public";
 
-/**
- * Structure tables array for clearing database tables when exporting
- */
 $options['structure-tables']['common'] = array(
   // Cache tables
   'cache',
-  'cache_admin_menu',
   'cache_block',
-  'cache_bootstrap',
-  'cache_field',
+  'cache_content',
   'cache_filter',
   'cache_form',
-  'cache_image',
-  'cache_libraries',
-  'cache_media_xml',
+  'cache_location',
   'cache_menu',
-  'cache_metatag',
+  'cache_mollom',
   'cache_page',
-  'cache_path',
   'cache_rules',
-  'cache_token',
+  'cache_update',
   'cache_views',
   'cache_views_data',
   'ctools_css_cache',
@@ -61,7 +57,8 @@ $options['structure-tables']['common'] = array(
   // 'devel_queries',
   // 'devel_times',
 
-  // User profile fields
+  // User profile data
+  'profile_values',
 
    // Search tables
   'search_dataset',
@@ -72,23 +69,26 @@ $options['structure-tables']['common'] = array(
 
 $options['structure-tables']['springboard'] = array(
   // Springboard
-  'cache_salesforce_object',
-  'fundraiser_sustainers',
-  'fundraiser_donation',
-  'salesforce_log_batch',
-  'salesforce_log_item',
-  'salesforce_queue',
-  'salesforce_sync_map',
+  'salesforce_management_object_map',
+  'fundraiser_recurring',
+  'fundraiser_webform_order',
+  'sf_batch_item',
+  'sf_batch_error',
+  'sf_batch',
+  'sf_donation_log',
+  'sf_donation_opportunity_contact_role',
+  'sf_permanent_failure',
+  'sf_retry_queue',
+  'sf_heap',
+  'sf_queue',
 
-  // Commerce
-  'commerce_line_item',
-  'commerce_order',
-  'commerce_order_revision',
-  'commerce_payment_transaction',
-  'commerce_payment_transaction_revision',
-  'commerce_paypal_ipn',
-  'commerce_product',
-  'commerce_product_revision',
+  // Ubercart
+  'uc_orders',
+  'uc_order_comments',
+  'uc_order_admin_comments',
+  'uc_order_products',
+  'uc_order_line_items',
+  'uc_payment_receipts',
 
   // Webform
   'webform_submissions',

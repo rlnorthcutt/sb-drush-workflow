@@ -35,3 +35,10 @@ _note: this will fail if you have tables listed in the array that are not in you
  - drush offline : put site in maintenance mode
  - drush online : take site out of maintenance mode
  - drush get-db : grab a CLEAN copy of the DB using the scrubbing above
+ 
+ ---
+ 
+ **REQUIREMENTS**  
+ 
+This setup relies on Drush 6+. If you happen to have an earlier version, then everything _should_ work ok, but you can't use wildcards in the structure tables array (ie. you need to list each individual table).
+

@@ -1,14 +1,17 @@
-sb-drushrc
-==========
+sb-drush-workflow
+=================
 
-Sample drushrc.php file for use with Springboard projects.
+Sample drush files for use with Springboard projects.
 
 **INSTALLATION**
 
-1. Add the file to the repo at sites/all/drush/drushrc.php
-2. Modify as needed
-3. Run "drush cache-clear drush" to load the new aliases
-4. Use Drush like a pro
+1. Make sure you select the correct branch for the version of Drupal you have
+2. Copy the drush folder to your sites/all directory
+3. Modify as needed
+4. Run "drush cache-clear drush" to load the new aliases
+5. Use Drush like a pro
+
+You can also copy the contents of the settings directory to your sites/default directory and use the default.local.settings.php to create the relevant local.settings.php file. 
 
 **DATABASE SCRUBBING**
 

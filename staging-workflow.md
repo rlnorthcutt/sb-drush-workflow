@@ -25,13 +25,13 @@ This is a sandbox. It can be commandeered for a quick feature-branch dev site. I
 ## Branches
 - **master**  
 This is the production level code. It is staged automatically and is manually pushed to production.
-- **[feature-branch] ** 
+- **[feature-branch]** 
 We will create feature branches as needed, and deploy them to the the dev site as needed. For longer term projects we can spin up a dedicated dev server until its ready to merge into master.
 
 ----
 
 ## Deployments  
-**Automatic **  
+**Automatic**  
 staging.mainsite.com : (master -> staging)  
 dev.mainsite.com : (jrdev / feature branch -> dev sandbox)  
 

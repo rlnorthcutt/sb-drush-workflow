@@ -1,4 +1,4 @@
-SB-Drushrc
+sb-drushrc
 ==========
 
 Sample drushrc.php file for use with Springboard projects.

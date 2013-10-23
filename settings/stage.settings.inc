@@ -9,18 +9,14 @@
 
 // Use environment indicator, if available.
 $conf['environment_indicator_overwrite'] = TRUE;
-$conf['environment_indicator_enabled'] = TRUE;
-$conf['environment_indicator_text'] = 'STAGING';
-$conf['environment_indicator_color'] = '#00bb00';
+$conf['environment_indicator_overwritten_name'] = 'STAGING SERVER';
+$conf['environment_indicator_overwritten_color'] = '#00bb00';
 
  /**
  * This enables you use the same session over HTTP and HTTPS both --
  *   but with two cookies where the HTTPS cookie is sent over HTTPS only.
  */
 $conf['https'] = TRUE;
-
-// Use a test payment gateway to prevent real transactions
-$conf['uc_payment_credit_gateway'] = 'test_gateway';
 
 // Use memcache if available & enabled.
 $_memcache_inc = $_contrib_path . '/memcache/memcache.inc';

@@ -55,9 +55,8 @@ function go_local_dev() {
 
   // Allow everyone to see devel messages like dpm().
   if(module_exists('devel')) {
-    // @TODO: this is for 7, we need the equivalent in 6
-    // user_role_grant_permissions(1, array('access devel information'));
-    // user_role_grant_permissions(2, array('access devel information'));
+    user_role_grant_permissions(1, array('access devel information'));
+    user_role_grant_permissions(2, array('access devel information'));
   }
 
   // Set all donation forms to testing gateway

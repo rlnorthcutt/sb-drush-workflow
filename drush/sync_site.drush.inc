@@ -50,6 +50,7 @@ function sync_site_db() {
   // Include required files
   require_once DRUSH_BASE_PATH . '/commands/sql/sync.sql.inc';
   require_once DRUSH_BASE_PATH . '/commands/core/rsync.core.inc';
+  // @TODO: Save the local SF connection vars & put them back after
   // Set options
   drush_set_option('structure-tables-key', 'common+springboard');
   drush_set_option('skip-tables-key', 'common');

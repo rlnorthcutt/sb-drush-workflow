@@ -1,7 +1,7 @@
 <?php
  /**
  * @file
- * local.settings.php (Drupal 6.x)
+ * local.settings.php (Drupal 7.x)
  *
  * This settings file is intended to contain settings specific to this local
  * environment, by overriding options set in settings.php.
@@ -21,12 +21,21 @@
 $_db_name = 'DBNAME';
 
 // Database configuration.
-if (is_array($db_url)) {
-  $db_url['default'] = 'mysqli://root:root@localhost/' . $_db_name;
-}
-else {
-  $db_url = 'mysqli://root:root@localhost/' . $_db_name;
-}
+$databases = array (
+  'default' =>
+  array (
+    'default' =>
+    array (
+      'database' => $_db_name,
+      'username' => 'root',
+      'password' => 'root',
+      'host' => 'localhost',
+      'port' => '',
+      'driver' => 'mysql',
+      'prefix' => '',
+    ),
+  ),
+);
 
 // Toggle the use of memcache.
 $_use_memcache = FALSE;

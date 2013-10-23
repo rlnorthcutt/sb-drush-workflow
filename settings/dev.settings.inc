@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * dev.settings.php (Drupal 6.x)
+ * dev.settings.php (Drupal 7.x)
  *
  * This settings file is intended to contain settings specific to a development
  * environment, by overriding options set in settings.php.
@@ -20,31 +20,16 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-// Fix for fast_404 module under lighttpd.
-$_SERVER['QUERY_STRING'] = preg_replace('/&$/i', '', $_SERVER['QUERY_STRING']);
-
-// Prep the $conf array.
-if (!is_array($conf)) {
-  $conf = array();
-}
-
 // Save email messages to the log instead of sending them out. This is to
 // prevent accidental email sends from a development site.
-// Make sure you adjust this value if the Devel module is located elsewhere
-$_smtp_library = $_contrib_path . '/devel/devel.module';
-if (is_file($_smtp_library)) {
-  $conf['smtp_library'] = $_smtp_library;
-}
+$conf['mail_system'] = array('default-system' => 'DevelMailLog');
 
 // Disable Secure Pages and Secure Site module functionality
 $conf['securepages_enable'] = 0;
 $conf['securesite_enabled'] = 0;
 
 // Use a test payment gateway to prevent real transactions
-$conf['uc_payment_credit_gateway'] = 'test_gateway';
-
-// Put fundraiser in development mode
-$conf['fundraiser_development_mode'] = 1;
+// $conf['uc_payment_credit_gateway'] = 'test_gateway';
 
 // Lower the search indexing per cron run to prevent long cron runs
 $conf['search_cron_limit'] = 5;
@@ -54,9 +39,9 @@ $conf['preprocess_css'] = 0;
 $conf['preprocess_js'] = 0;
 
 // Use environment indicator, if available.
-$conf['environment_indicator_enabled'] = TRUE;
-$conf['environment_indicator_text'] = 'LOCAL DEVELOPMENT';
-$conf['environment_indicator_color'] = '#bb0000';
+$conf['environment_indicator_overwrite'] = TRUE;
+$conf['environment_indicator_overwritten_name'] = 'LOCAL DEVELOPMENT';
+$conf['environment_indicator_overwritten_color'] = '#bb0000';
 
 // Use memcache if available & enabled.
 $_memcache_inc = $_contrib_path . '/memcache/memcache.inc';

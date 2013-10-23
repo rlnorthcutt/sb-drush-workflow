@@ -7,16 +7,16 @@
  * environment, by overriding options set in settings.php.
  */
 
+// Use environment indicator, if available.
+$conf['environment_indicator_overwrite'] = TRUE;
+$conf['environment_indicator_overwritten_name'] = 'PRODUCTION';
+$conf['environment_indicator_overwritten_color'] = '#0000bb';
+
  /**
  * This enables you use the same session over HTTP and HTTPS both --
  *   but with two cookies where the HTTPS cookie is sent over HTTPS only.
  */
 $conf['https'] = TRUE;
-
-// Use environment indicator, if available.
-$conf['environment_indicator_enabled'] = TRUE;
-$conf['environment_indicator_text'] = 'PRODUCTION';
-$conf['environment_indicator_color'] = '#0000bb';
 
 // No non-admin updates
 $update_free_access = FALSE;

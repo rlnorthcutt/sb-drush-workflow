@@ -4,6 +4,13 @@
  * See http://drush.ws/examples/example.drushrc.php for more info
  */
 
+ /**
+ * Check whether Drush is 6.x or better.
+ */
+if (preg_match('/^[0-5]\./', DRUSH_VERSION)) {
+  drush_set_error("This drushrc.php not compatible with Drush versions older than 6.x. Please upgrade.");
+}
+
 /**
  * Useful shell aliases:
  *
@@ -23,79 +30,59 @@ $options['shell-aliases']['nc-dis'] = '!drush -y dis $(drush pml --status=enable
 $options['shell-aliases']['wipe'] = 'cache-clear all';
 $options['shell-aliases']['offline'] = 'variable-set -y --always-set maintenance_mode 1';
 $options['shell-aliases']['online'] = 'variable-delete -y --exact maintenance_mode';
-$options['shell-aliases']['get-db'] = 'sql-dump --structure-tables-key=common+springboard';
-$options['shell-aliases']['sync-db'] = 'sql-sync --structure-tables-key=common+springboard';
+$options['shell-aliases']['get-db'] = 'sql-dump --structure-tables-key=common+springboard --skip-tables-key=common';
 
 /**
- * Structure tables array for clearing database tables when exporting
+ * Structure tables - DB tables that need to have their structure migrated, but
+ * NOT their data. We break this up into common and springboard for convenience,
+ * and then call both for our shortcuts.
  */
+// Common tables
 $options['structure-tables']['common'] = array(
+  // Advagg tables
+  'advagg_bundles',
   // Cache tables
-  'cache',
-  'cache_admin_menu',
-  'cache_block',
-  'cache_bootstrap',
-  'cache_field',
-  'cache_filter',
-  'cache_form',
-  'cache_image',
-  'cache_libraries',
-  'cache_media_xml',
-  'cache_menu',
-  'cache_metatag',
-  'cache_page',
-  'cache_path',
-  'cache_rules',
-  'cache_token',
-  'cache_views',
-  'cache_views_data',
-  'ctools_css_cache',
-  'ctools_object_cache',
-
+  'cache*',
   // Other core tables
   'history',
   'sessions',
   'watchdog',
-
   // Devel query log
-  // 'devel_queries',
-  // 'devel_times',
-
-  // User profile fields
-
-   // Search tables
-  'search_dataset',
-  'search_index',
-  'search_node_links',
-  'search_total',
+  'devel*',
+  // User profile data
+  'profile_values',
+  // Search tables
+  'search*',
 );
 
+// Springboard and UC
 $options['structure-tables']['springboard'] = array(
   // Springboard
-  'cache_salesforce_object',
-  'fundraiser_sustainers',
-  'fundraiser_donation',
-  'salesforce_log_batch',
-  'salesforce_log_item',
-  'salesforce_queue',
-  'salesforce_sync_map',
-
-  // Commerce
-  'commerce_line_item',
-  'commerce_order',
-  'commerce_order_revision',
-  'commerce_payment_transaction',
-  'commerce_payment_transaction_revision',
-  'commerce_paypal_ipn',
-  'commerce_product',
-  'commerce_product_revision',
-
+  'salesforce_management_object_map',
+  'fundraiser_recurring',
+  'fundraiser_webform_order',
+  'sf_*',
+  // Ubercart
+  'uc_orders',
+  'uc_order_admin_comments',
+  'uc_order_comments',
+  'uc_order_line_items',
+  'uc_order_log',
+  'uc_payment_receipts',
+  'uc_order_products',
   // Webform
   'webform_submissions',
   'webform_submitted_data',
 );
 
+// Combined
 $options['structure-tables']['common+springboard'] = array_merge(
   $options['structure-tables']['common'],
   $options['structure-tables']['springboard']
 );
+
+/**
+ * Skip tables array - these are tables which need to be skipped entirely. This
+ * is especially useful for mysql views
+ */
+$options['skip-tables']['common'] = array();

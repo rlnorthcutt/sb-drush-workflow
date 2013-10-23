@@ -1,14 +1,13 @@
 <?php
 /**
  * @file
- * stage.settings.php (Drupal 7.x)
+ * stage.settings.php (Drupal 6.x)
  *
  * This settings file is intended to contain settings specific to a staging
  * environment, by overriding options set in settings.php.
  */
 
 // Use environment indicator, if available.
-$conf['environment_indicator_overwrite'] = TRUE;
 $conf['environment_indicator_enabled'] = TRUE;
 $conf['environment_indicator_text'] = 'STAGING';
 $conf['environment_indicator_color'] = '#00bb00';

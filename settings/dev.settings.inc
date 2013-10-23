@@ -7,6 +7,11 @@
  * environment, by overriding options set in settings.php.
  */
 
+// Use environment indicator, if available.
+$conf['environment_indicator_enabled'] = TRUE;
+$conf['environment_indicator_text'] = 'LOCAL DEVELOPMENT';
+$conf['environment_indicator_color'] = '#bb0000';
+
 // Allow anyone to run update.php.
 $update_free_access = TRUE;
 
@@ -19,14 +24,6 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 // that occur before settings.php will also be reported.
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
-
-// Fix for fast_404 module under lighttpd.
-$_SERVER['QUERY_STRING'] = preg_replace('/&$/i', '', $_SERVER['QUERY_STRING']);
-
-// Prep the $conf array.
-if (!is_array($conf)) {
-  $conf = array();
-}
 
 // Save email messages to the log instead of sending them out. This is to
 // prevent accidental email sends from a development site.
@@ -52,11 +49,6 @@ $conf['search_cron_limit'] = 5;
 // Disable preprocessing of CSS and JS.
 $conf['preprocess_css'] = 0;
 $conf['preprocess_js'] = 0;
-
-// Use environment indicator, if available.
-$conf['environment_indicator_enabled'] = TRUE;
-$conf['environment_indicator_text'] = 'LOCAL DEVELOPMENT';
-$conf['environment_indicator_color'] = '#bb0000';
 
 // Use memcache if available & enabled.
 $_memcache_inc = $_contrib_path . '/memcache/memcache.inc';

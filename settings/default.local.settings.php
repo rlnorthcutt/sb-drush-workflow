@@ -47,9 +47,9 @@ $_use_devel = FALSE;
 $_contrib_path = 'sites/all/modules/contrib';
 
 // Uncomment the line for the environment this is
-# @include('dev.settings.php');
-# @include('stage.settings.php');
-# @include('prod.settings.php');
+# @include('dev.settings.inc');
+# @include('stage.settings.inc');
+# @include('prod.settings.inc');
 
 // Custom settings
 # $conf['maintenance_theme'] = 'CUSTOMTHEME';

@@ -31,6 +31,7 @@ $options['shell-aliases']['wipe'] = 'cache-clear all';
 $options['shell-aliases']['offline'] = 'variable-set -y --always-set maintenance_mode 1';
 $options['shell-aliases']['online'] = 'variable-delete -y --exact maintenance_mode';
 $options['shell-aliases']['get-db'] = 'sql-dump --structure-tables-key=common+springboard --skip-tables-key=common';
+$options['shell-aliases']['sync-db-clean'] = 'sql-sync --structure-tables-key=common+springboard --skip-tables-key=common';
 
 /**
  * Structure tables - DB tables that need to have their structure migrated, but

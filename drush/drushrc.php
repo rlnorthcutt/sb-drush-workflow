@@ -8,7 +8,7 @@
  * Check whether Drush is 6.x or better.
  */
 if (preg_match('/^[0-5]\./', DRUSH_VERSION)) {
-  drush_set_error("This drushrc.php not compatible with Drush versions older than 6.x. Please upgrade.");
+  drush_set_error("This drushrc.php not compatible with Drush versions less than 6.x. Please upgrade.");
 }
 
 /**

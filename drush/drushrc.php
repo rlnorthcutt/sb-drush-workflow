@@ -134,6 +134,9 @@ $options['structure-tables']['common+springboard'] = array_merge(
   $options['structure-tables']['springboard']
 );
 
+// Include the other variation just in case.
+$options['structure-tables']['springboard+common'] = $options['structure-tables']['common+springboard'];
+
 /**
  * Skip tables array - these are tables which need to be skipped entirely. This
  * is especially useful for mysql views

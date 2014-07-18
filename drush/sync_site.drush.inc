@@ -74,6 +74,7 @@ function sync_site_files() {
     'mode' => 'arhzO',
   );
   // Call drush rsync
+  require_once DRUSH_BASE_PATH . '/commands/core/rsync.core.inc';
   drush_log('*** Starting File sync from production to local *** ', 'ok');
   drush_core_rsync('@prod:%files', '@self:%files', $options);
   drush_log('*** File sync complete *** ', 'ok');

@@ -59,6 +59,8 @@ function sync_site_db() {
   // Initiate the sync
   drush_log('*** Starting DB sync from production to local*** ', 'ok');
   drush_sql_sync('@prod', '@self');
+  // Sanitize users per ticket #1081.
+  drush_sql_query('UPDATE users SET name=md5(name), mail="placeholder@placeholder", init="placeholder@placeholder" WHERE uid > 1 AND mail NOT LIKE "%jacksonriver.com%"');
   drush_log('*** DB sync complete *** ', 'ok');
 }
 

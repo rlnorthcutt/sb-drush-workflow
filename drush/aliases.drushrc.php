@@ -5,10 +5,11 @@ $aliases['prod'] = array(
   'remote-host' => '127.0.0.1',
   'remote-user' => 'admin',
   'path-aliases' => array(
+    '%dump' => '/tmp',
     '%dump-dir' => '/tmp',
     '%files' => 'sites/default/files',
   ),
-  // Forces the sql-sync & rsync to simulate if the policy misses them
+  // Read only - force the sql-sync & rsync to simulate transfer to this server
   'command-specific' => array (
     'sql-sync' => array (
       'simulate' => '1',
@@ -25,10 +26,11 @@ $aliases['prod-2'] = array(
   'remote-host' => '127.0.0.2',
   'remote-user' => 'admin',
   'path-aliases' => array(
+    '%dump' => '/tmp',
     '%dump-dir' => '/tmp',
     '%files' => 'sites/default/files',
   ),
-  // Forces the sql-sync & rsync to simulate if the policy misses them
+  // Read only - force the sql-sync & rsync to simulate transfer to this server
   'command-specific' => array (
     'sql-sync' => array (
       'simulate' => '1',
@@ -45,6 +47,7 @@ $aliases['staging'] = array(
   'remote-host' => '127.0.0.3',
   'remote-user' => 'admin',
   'path-aliases' => array(
+    '%dump' => '/tmp',
     '%dump-dir' => '/tmp',
     '%files' => 'sites/default/files',
   ),
@@ -56,6 +59,7 @@ $aliases['dev'] = array(
   'remote-host' => '127.0.0.4',
   'remote-user' => 'admin',
   'path-aliases' => array(
+    '%dump' => '/tmp',
     '%dump-dir' => '/tmp',
     '%files' => 'sites/default/files',
   ),
